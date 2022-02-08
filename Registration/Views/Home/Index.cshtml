@@ -1,0 +1,130 @@
+﻿@using Registration.Models.tblRegistration
+@model Registration.Models.tbldistrict
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <style type="text/css">
+
+        #grad1 {
+            background-image: linear-gradient(to bottom right, #DA22FF, #9733EE);
+        }
+
+        .form-group {
+            color: white;
+            font-weight: bold;
+        }
+
+        center h2 {
+            color: white;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Index</title>
+</head>
+
+
+<body id="grad1">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal ">
+            <center><h2>Registration Form</h2></center>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group d-flex justify-content-center">
+                @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-1 mr-3 " })
+                <div class="col-sm-5 ">
+                    @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group d-flex justify-content-center">
+                @Html.LabelFor(model => model.Time, htmlAttributes: new { @class = "control-label col-md-1 mr-3 " })
+                <div class="col-sm-5">
+                    @Html.EditorFor(model => model.Time, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Time, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group d-flex justify-content-center">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-1 mr-3 " })
+                <div class="col-sm-5">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group d-flex justify-content-center">
+                @Html.LabelFor(model => model.District, htmlAttributes: new { @class = "control-label col-md-1 mr-3" })
+                <div class="col-sm-5">
+                    @*@Html.EditorFor(model => model.District, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.District, "", new { @class = "text-danger" })*@
+
+                    @Html.DropDownListFor(model => model.District, new SelectList(ViewBag.data, "DistrictName", "DistrictName"), "--Select--", htmlAttributes: new { @class = "form-control" })
+                </div>
+
+
+            </div>
+
+            <div class="form-group d-flex justify-content-center">
+                @Html.LabelFor(model => model.Taluka, htmlAttributes: new { @class = "control-label col-md-1 mr-3" })
+                <div class="col-sm-5">
+                    @Html.EditorFor(model => model.Taluka, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Taluka, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group d-flex justify-content-center">
+                @Html.LabelFor(model => model.Village, htmlAttributes: new { @class = "control-label col-md-1 mr-3" })
+                <div class="col-sm-5">
+                    @Html.EditorFor(model => model.Village, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Village, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group d-flex justify-content-center">
+                @Html.LabelFor(model => model.Mobile_No, htmlAttributes: new { @class = "control-label col-md-1 mr-3" })
+                <div class="col-sm-5">
+                    @Html.EditorFor(model => model.Mobile_No, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Mobile_No, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group d-flex justify-content-center">
+                @Html.LabelFor(model => model.No_Of_Live_Stock, htmlAttributes: new { @class = "control-label col-md-1 mr-3" })
+                <div class="col-sm-5">
+                    @Html.EditorFor(model => model.No_Of_Live_Stock, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.No_Of_Live_Stock, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <br />
+
+
+
+            <div class="form-group ">
+                <div class="col-md-offset-2  d-flex justify-content-center">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+
+    }
+
+
+</body>
+</html>
